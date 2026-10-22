@@ -43,6 +43,17 @@ jobs:
           rm -rf android
           npx @capacitor/cli add android
 
+          # Fix Kotlin version conflict in build.gradle
+          echo "
+          configurations.all {
+              resolutionStrategy.eachDependency { details ->
+                  if (details.requested.group == 'org.jetbrains.kotlin') {
+                      details.useVersion '1.8.22'
+                  }
+              }
+          }
+          " >> android/build.gradle
+
       - name: Build Debug APK and Signed Release AAB
         run: |
           cd android
