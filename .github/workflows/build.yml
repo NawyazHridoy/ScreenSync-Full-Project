@@ -31,7 +31,7 @@ jobs:
 
       - name: Install Dependencies and Sync Capacitor
         run: |
-          npm install || true
+          npm install
           mkdir -p www
           if [ -f "ScreenSync.html" ] && [ ! -f "www/index.html" ]; then
             cp "ScreenSync.html" www/index.html
@@ -40,11 +40,9 @@ jobs:
             npm install @capacitor/core @capacitor/cli @capacitor/android
             npx cap init "ScreenSync" "com.hridoy.screensync" --web-dir www
           fi
-          if [ ! -d "android" ]; then
-            npx cap add android
-          else
-            npx cap sync android || true
-          fi
+          # Ensure android platform and gradlew exist properly
+          rm -rf android
+          npx cap add android
 
       - name: Build Debug APK and Signed Release AAB
         run: |
