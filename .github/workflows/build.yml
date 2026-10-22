@@ -43,13 +43,12 @@ jobs:
           rm -rf android
           npx @capacitor/cli add android
 
-          # Fix Kotlin version conflict in build.gradle
+          # Exclude conflicting legacy kotlin stdlib modules
           echo "
-          configurations.all {
-              resolutionStrategy.eachDependency { details ->
-                  if (details.requested.group == 'org.jetbrains.kotlin') {
-                      details.useVersion '1.8.22'
-                  }
+          allprojects {
+              configurations.all {
+                  exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+                  exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
               }
           }
           " >> android/build.gradle
