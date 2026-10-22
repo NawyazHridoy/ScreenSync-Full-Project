@@ -1,0 +1,17 @@
+{
+  "appId": "io.screensync.wellness",
+  "appName": "ScreenSync",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "backgroundColor": "#000000",
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "capacitor"
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#000000"
+    }
+  }
+}

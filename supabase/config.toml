@@ -1,0 +1,27 @@
+# ScreenSync Supabase Project Configuration
+# Project ID: ldephpgydnsovhlkuzbe
+project_id = "ldephpgydnsovhlkuzbe"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[auth]
+enabled = true
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+secure_password_change = false
+max_frequency = "60s"
+otp_length = 6
+otp_exp = 3600

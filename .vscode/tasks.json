@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Automated Test Suite",
+      "type": "shell",
+      "command": "node tests/run_all_tests.js",
+      "group": "test",
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Sync Web Assets to Android & iOS",
+      "type": "shell",
+      "command": "node scripts/sync-web-assets.js",
+      "group": "build"
+    },
+    {
+      "label": "Build Android Debug APK",
+      "type": "shell",
+      "command": "cd android && ./gradlew assembleDebug",
+      "group": "build"
+    }
+  ]
+}
